@@ -1747,100 +1747,189 @@ footer:hover .big-name {
 @media (max-width: 768px) {
 
     /* --- 1. GLOBAL RESET --- */
-    /* Prevents horizontal scrolling caused by overflowing elements */
-    body, html {
+    body,
+    html {
         overflow-x: hidden;
         width: 100%;
     }
 
-    /* --- 2. GLASS CARD FIX (CRITICAL) --- */
+    /* --- 2. GLASS CARD FIX --- */
     .glass-card {
-        /* Force reset of positioning */
-        position: relative !important; 
+        position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        
-        /* Force width to fit mobile screen */
         width: 90% !important;
-        min-width: 0 !important; /* This fixes the overflow issue from the video */
-        
+        min-width: 0 !important;
         margin: 2rem auto !important;
         padding: 1.5rem !important;
-        
-        /* Ensure it's visible */
         opacity: 1 !important;
         filter: blur(0) !important;
-        transform: translateY(0) !important;
     }
 
-    /* --- 3. TABS FIX (Work & Pricing) --- */
-    /* Makes tabs wrap to two lines if they are too wide */
-    .work-tabs, 
+    /* --- 3. FIXING THE TABS (Projects & Pricing) --- */
+    /* Remove the "pill container" look on mobile */
+    .work-tabs,
     .pricing-tabs {
-        width: 95% !important;
-        flex-wrap: wrap !important; /* Allows buttons to stack */
-        gap: 0.5rem !important;
-        justify-content: center !important;
-        padding: 0.5rem !important;
-    }
-
-    .tab-btn, 
-    .pricing-tab-btn {
-        font-size: 0.75rem !important; /* Smaller text */
-        padding: 0.6rem 1rem !important; /* Smaller padding */
-        flex: 1 1 auto; /* Allow buttons to shrink */
-    }
-
-    /* --- 4. HERO TEXT SCALING --- */
-    #home-content h1 {
-        font-size: 14vw !important; /* Fits "HAIDER ALI" perfectly */
-        line-height: 1.1 !important;
-    }
-    
-    #home-content h3 {
-        font-size: 0.9rem !important;
-    }
-
-    /* --- 5. STATS VISIBILITY --- */
-    .stats-strip {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 2rem !important;
-    }
-
-    .stat-block {
+        width: 100% !important;
+        background: transparent !important;
+        /* Remove grey bg */
+        border: none !important;
+        /* Remove border */
+        padding: 0 !important;
         flex-direction: column !important;
+        /* Stack vertically */
+        gap: 10px !important;
+        border-radius: 0 !important;
+    }
+
+    /* Style the buttons individually */
+    .tab-btn,
+    .pricing-tab-btn {
+        width: 100% !important;
         text-align: center !important;
-        width: 45% !important; /* 2x2 Layout */
+        background: #0A0A0A !important;
+        border: 1px solid var(--border-color) !important;
+        padding: 1rem !important;
+        border-radius: 12px !important;
+        /* Rounded corners for individual buttons */
+        margin: 0 !important;
     }
 
-    .stat-num {
-        font-size: 3rem !important;
-        -webkit-text-stroke: 0px !important; /* Removes stroke so it's solid visible text */
-        color: var(--text-main) !important;
+    .tab-btn.active,
+    .pricing-tab-btn.active {
+        background: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
     }
 
-    /* --- 6. NAVBAR CLEANUP --- */
-    /* Hides desktop nav elements */
-    .nav-left, .nav-center, .social-group {
+    /* --- 4. FIXING "BOOK CONSULTATION" TEXT --- */
+    .cta-btn {
+        font-size: 1.2rem !important;
+        /* Smaller font */
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 1rem !important;
+        border: 1px solid var(--primary) !important;
+        border-radius: 50px !important;
+        background: #0A0A0A !important;
+        /* Optional: keep it dark or make orange if you prefer */
+    }
+
+    .cta-btn i {
+        font-size: 1.5rem !important;
+    }
+
+    /* --- 5. ORANGE CTA IN NAVBAR (Requested) --- */
+    .nav-right .btn-book {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+    }
+
+    /* Ensure nav right is visible and centered */
+    .nav-right {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        margin-top: 0.5rem;
+    }
+
+    /* --- 6. FAQ SECTION (Mobile Layout) --- */
+    .faq-layout {
+        flex-direction: column !important;
+    }
+
+    .terminal-wrapper {
+        display: none !important;
+        /* Hide terminal on mobile */
+    }
+
+    .faq-menu {
+        width: 100% !important;
+    }
+
+    /* Styles for the JS generated dropdown answer */
+    .mobile-faq-answer {
+        background: #111;
+        padding: 1rem;
+        margin-top: -5px;
+        margin-bottom: 1rem;
+        border-left: 2px solid var(--primary);
+        color: #ccc;
+        font-family: monospace;
+        font-size: 0.9rem;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* --- 7. FOOTER NAME FIX --- */
+    .big-name {
+        font-size: 18vw !important;
+        line-height: 1 !important;
+        margin-bottom: -10px !important;
+        /* Pull it up slightly */
+        padding-bottom: 20px !important;
+    }
+
+    footer {
+        padding-bottom: 0 !important;
+    }
+
+    /* --- 8. GENERAL CLEANUP --- */
+    .nav-left,
+    .nav-center,
+    .social-group {
         display: none !important;
     }
 
     .navbar {
-        justify-content: center !important;
+        flex-direction: column !important;
         padding: 1rem !important;
     }
-    
-    /* Centers the 'Book Call' button */
-    .nav-right {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+
+    #home-content h1 {
+        font-size: 14vw !important;
+        line-height: 1.1 !important;
     }
 
-    /* --- 7. GRID STACKING --- */
-    /* Forces all grids to 1 column */
+    #home-content-p {
+        display: none !important;
+    }
+
+    .stats-strip {
+        flex-wrap: wrap !important;
+        gap: 2rem !important;
+        justify-content: center !important;
+    }
+
+    .stat-block {
+        width: 45% !important;
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .stat-num {
+        font-size: 3rem !important;
+        -webkit-text-stroke: 0px !important;
+        color: white !important;
+    }
+
+    /* Force grids to 1 column */
     .services-container,
     .projects-grid,
     .testimonial-grid,
@@ -1848,21 +1937,6 @@ footer:hover .big-name {
     .footer-grid {
         grid-template-columns: 1fr !important;
         width: 90% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
         gap: 2rem !important;
     }
-
-    /* --- 8. SPACINGS --- */
-    #home-content-p { display: none !important; } /* Hide hero paragraph */
-    
-    .card-visual { height: 180px !important; }
-    
-    .project-card.featured { grid-row: auto !important; }
-    
-    #about, #work, #testimonials, #pricing {
-        padding: 3rem 0 !important;
-    }
-    
-    .pricing-container, .faq-container { width: 100% !important; }
 }
