@@ -1741,86 +1741,39 @@ footer:hover .big-name {
 }
 
 /* =========================================
-   RESPONSIVE DESIGN (ADD AT BOTTOM OF CSS)
+   MOBILE & RESPONSIVE FIXES (PASTE AT BOTTOM)
    ========================================= */
 
-/* --- TABLETS & SMALL LAPTOPS (Max Width: 1024px) --- */
-@media (max-width: 1024px) {
-
-    /* Adjust Container Widths */
-    .navbar,
-    .stats-strip,
-    .services-container,
-    .cta-section,
-    .work-panel,
-    .pricing-container,
-    .faq-container,
-    .footer-content {
-        width: 90%;
-        max-width: 100%;
-    }
-
-    /* Resize Massive Headings */
-    #home-content h1 {
-        font-size: 6rem;
-    }
-
-    /* Adjust Glass Card for Tablet */
-    .glass-card {
-        width: 45%;
-        min-width: auto;
-        left: 50%;
-        top: 85vh;
-        /* Push slightly lower */
-    }
-
-    /* Grid Adjustments (3 columns -> 2 columns) */
-    .services-container,
-    .testimonial-grid,
-    .pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* --- MOBILE DEVICES (Max Width: 768px) --- */
 @media (max-width: 768px) {
 
-    /* 1. NAVBAR ADJUSTMENTS */
-    .site-header {
-        top: 1rem;
+    /* --- 1. NAVBAR SIMPLIFICATION --- */
+    /* Hides the email and the middle links, keeping only the CTA */
+    .nav-left,
+    .nav-center {
+        display: none !important;
     }
 
     .navbar {
-        flex-direction: column;
-        gap: 1rem;
+        justify-content: center;
+        /* Centers the "Book Call" button */
         padding: 0.5rem;
     }
 
-    .nav-center {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        overflow-x: auto;
-        /* Allows scrolling if links overflow */
-        white-space: nowrap;
-        display: flex;
-        justify-content: center;
-        border-radius: 15px;
+    .site-header {
+        top: 1rem;
+        /* Moves it slightly up */
     }
 
-    .nav-links {
-        gap: 1.5rem;
+    /* --- 2. HIDE SOCIAL ICONS --- */
+    .social-group {
+        display: none !important;
     }
 
-    .nav-right {
-        display: none;
-        /* Hide 'Book Call' on mobile to save space, or move to bottom */
-    }
-
-    /* 2. HERO SECTION */
+    /* --- 3. TYPOGRAPHY FIXES --- */
+    /* Scales down the giant text so it fits on screen */
     #home-content h1 {
-        font-size: 13vw;
-        /* Responsive sizing based on viewport width */
-        letter-spacing: 2px;
+        font-size: 14vw;
+        line-height: 1.1;
     }
 
     #home-content h3 {
@@ -1828,117 +1781,96 @@ footer:hover .big-name {
         letter-spacing: 2px;
     }
 
-    /* Hide the paragraph text on mobile hero to reduce clutter */
+    /* Hide the paragraph on home screen to clean up mobile view */
     #home-content-p {
         display: none;
     }
 
-    /* 3. GLASS CARD (CRITICAL FIX) */
-    /* We switch from Absolute to Relative so it stacks normally */
+    /* --- 4. GLASS CARD FIX (CRITICAL) --- */
+    /* This was likely causing the 'breaking' due to fixed width */
     .glass-card {
         position: relative;
+        /* No longer absolute */
         top: auto;
         left: auto;
         transform: none;
+
         width: 90%;
-        min-width: auto;
-        margin: -50px auto 3rem auto;
-        /* Pull it up slightly into the hero area */
-        padding: 2rem;
+        min-width: unset;
+        /* REMOVES the 550px limit that broke mobile */
+        margin: 2rem auto;
+        /* Centers it with spacing */
+
+        padding: 1.5rem;
     }
 
-    /* 4. SECTIONS & GRIDS */
-    #about {
-        padding-top: 5rem;
-        /* Reduced padding */
-        margin-top: 0;
+    .glass-card h2 {
+        font-size: 1.5rem;
+        /* Smaller heading */
     }
 
-    /* Stack Stats Vertically or 2x2 */
-    .stats-strip {
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
-    }
-
-    .stat-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    /* Force 1 Column for all grids */
+    /* --- 5. GRID & LAYOUT STACKING --- */
+    /* Forces all 2-column or 3-column grids into a single vertical column */
     .services-container,
     .projects-grid,
     .testimonial-grid,
     .pricing-grid,
     .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        width: 90%;
+        gap: 2rem;
     }
 
-    /* Project Cards */
+    /* --- 6. SECTION SPACING --- */
+    /* Reduces the massive gaps between sections */
+    #about,
+    #work,
+    #testimonials,
+    #pricing,
+    #faq {
+        padding: 4rem 0;
+        min-height: auto;
+        /* Allow height to fit content naturally */
+    }
+
+    #about {
+        margin-top: 0;
+        padding-top: 2rem;
+    }
+
+    /* --- 7. PROJECT CARD ADJUSTMENTS --- */
     .project-card.featured {
         grid-row: auto;
-        /* Reset row span */
+        /* Reset the 2-row span */
     }
 
-    /* 5. FAQ SECTION */
+    .card-visual {
+        height: 150px;
+        /* Smaller images */
+    }
+
+    /* --- 8. FAQ & FOOTER --- */
     .faq-layout {
         flex-direction: column;
+        gap: 2rem;
     }
 
     .terminal-wrapper {
         height: 400px;
-        /* Smaller terminal on mobile */
         min-height: auto;
     }
 
-    /* 6. SOCIAL ICONS */
-    .social-group {
-        position: relative;
-        flex-direction: row;
-        top: auto;
-        right: auto;
-        transform: none;
-        margin: 2rem 0;
-        z-index: 5;
-    }
-
-    /* 7. FOOTER */
     .big-name {
         font-size: 18vw;
+        /* Scales footer name */
     }
 
     .huge-link {
         font-size: 8vw;
     }
-}
 
-/* --- SMALL MOBILE (Max Width: 480px) --- */
-@media (max-width: 480px) {
-
-    .nav-links {
-        gap: 1rem;
-        font-size: 0.8rem;
-    }
-
-    .nav-links a {
-        font-size: 0.75rem;
-    }
-
-    #home-content h1 {
-        font-size: 15vw;
-    }
-
-    .glass-card h2 {
-        font-size: 1.5rem;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .pricing-container {
+    .pricing-container,
+    .faq-container {
         width: 95%;
     }
 }
