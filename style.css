@@ -1741,136 +1741,128 @@ footer:hover .big-name {
 }
 
 /* =========================================
-   MOBILE & RESPONSIVE FIXES (PASTE AT BOTTOM)
+   FINAL MOBILE FIXES (PASTE AT BOTTOM OF CSS)
    ========================================= */
 
 @media (max-width: 768px) {
 
-    /* --- 1. NAVBAR SIMPLIFICATION --- */
-    /* Hides the email and the middle links, keeping only the CTA */
-    .nav-left,
-    .nav-center {
+    /* --- 1. GLOBAL RESET --- */
+    /* Prevents horizontal scrolling caused by overflowing elements */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* --- 2. GLASS CARD FIX (CRITICAL) --- */
+    .glass-card {
+        /* Force reset of positioning */
+        position: relative !important; 
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        
+        /* Force width to fit mobile screen */
+        width: 90% !important;
+        min-width: 0 !important; /* This fixes the overflow issue from the video */
+        
+        margin: 2rem auto !important;
+        padding: 1.5rem !important;
+        
+        /* Ensure it's visible */
+        opacity: 1 !important;
+        filter: blur(0) !important;
+        transform: translateY(0) !important;
+    }
+
+    /* --- 3. TABS FIX (Work & Pricing) --- */
+    /* Makes tabs wrap to two lines if they are too wide */
+    .work-tabs, 
+    .pricing-tabs {
+        width: 95% !important;
+        flex-wrap: wrap !important; /* Allows buttons to stack */
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        padding: 0.5rem !important;
+    }
+
+    .tab-btn, 
+    .pricing-tab-btn {
+        font-size: 0.75rem !important; /* Smaller text */
+        padding: 0.6rem 1rem !important; /* Smaller padding */
+        flex: 1 1 auto; /* Allow buttons to shrink */
+    }
+
+    /* --- 4. HERO TEXT SCALING --- */
+    #home-content h1 {
+        font-size: 14vw !important; /* Fits "HAIDER ALI" perfectly */
+        line-height: 1.1 !important;
+    }
+    
+    #home-content h3 {
+        font-size: 0.9rem !important;
+    }
+
+    /* --- 5. STATS VISIBILITY --- */
+    .stats-strip {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 2rem !important;
+    }
+
+    .stat-block {
+        flex-direction: column !important;
+        text-align: center !important;
+        width: 45% !important; /* 2x2 Layout */
+    }
+
+    .stat-num {
+        font-size: 3rem !important;
+        -webkit-text-stroke: 0px !important; /* Removes stroke so it's solid visible text */
+        color: var(--text-main) !important;
+    }
+
+    /* --- 6. NAVBAR CLEANUP --- */
+    /* Hides desktop nav elements */
+    .nav-left, .nav-center, .social-group {
         display: none !important;
     }
 
     .navbar {
+        justify-content: center !important;
+        padding: 1rem !important;
+    }
+    
+    /* Centers the 'Book Call' button */
+    .nav-right {
+        width: 100%;
+        display: flex;
         justify-content: center;
-        /* Centers the "Book Call" button */
-        padding: 0.5rem;
     }
 
-    .site-header {
-        top: 1rem;
-        /* Moves it slightly up */
-    }
-
-    /* --- 2. HIDE SOCIAL ICONS --- */
-    .social-group {
-        display: none !important;
-    }
-
-    /* --- 3. TYPOGRAPHY FIXES --- */
-    /* Scales down the giant text so it fits on screen */
-    #home-content h1 {
-        font-size: 14vw;
-        line-height: 1.1;
-    }
-
-    #home-content h3 {
-        font-size: 1rem;
-        letter-spacing: 2px;
-    }
-
-    /* Hide the paragraph on home screen to clean up mobile view */
-    #home-content-p {
-        display: none;
-    }
-
-    /* --- 4. GLASS CARD FIX (CRITICAL) --- */
-    /* This was likely causing the 'breaking' due to fixed width */
-    .glass-card {
-        position: relative;
-        /* No longer absolute */
-        top: auto;
-        left: auto;
-        transform: none;
-
-        width: 90%;
-        min-width: unset;
-        /* REMOVES the 550px limit that broke mobile */
-        margin: 2rem auto;
-        /* Centers it with spacing */
-
-        padding: 1.5rem;
-    }
-
-    .glass-card h2 {
-        font-size: 1.5rem;
-        /* Smaller heading */
-    }
-
-    /* --- 5. GRID & LAYOUT STACKING --- */
-    /* Forces all 2-column or 3-column grids into a single vertical column */
+    /* --- 7. GRID STACKING --- */
+    /* Forces all grids to 1 column */
     .services-container,
     .projects-grid,
     .testimonial-grid,
     .pricing-grid,
     .footer-grid {
         grid-template-columns: 1fr !important;
-        width: 90%;
-        gap: 2rem;
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        gap: 2rem !important;
     }
 
-    /* --- 6. SECTION SPACING --- */
-    /* Reduces the massive gaps between sections */
-    #about,
-    #work,
-    #testimonials,
-    #pricing,
-    #faq {
-        padding: 4rem 0;
-        min-height: auto;
-        /* Allow height to fit content naturally */
+    /* --- 8. SPACINGS --- */
+    #home-content-p { display: none !important; } /* Hide hero paragraph */
+    
+    .card-visual { height: 180px !important; }
+    
+    .project-card.featured { grid-row: auto !important; }
+    
+    #about, #work, #testimonials, #pricing {
+        padding: 3rem 0 !important;
     }
-
-    #about {
-        margin-top: 0;
-        padding-top: 2rem;
-    }
-
-    /* --- 7. PROJECT CARD ADJUSTMENTS --- */
-    .project-card.featured {
-        grid-row: auto;
-        /* Reset the 2-row span */
-    }
-
-    .card-visual {
-        height: 150px;
-        /* Smaller images */
-    }
-
-    /* --- 8. FAQ & FOOTER --- */
-    .faq-layout {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .terminal-wrapper {
-        height: 400px;
-        min-height: auto;
-    }
-
-    .big-name {
-        font-size: 18vw;
-        /* Scales footer name */
-    }
-
-    .huge-link {
-        font-size: 8vw;
-    }
-
-    .pricing-container,
-    .faq-container {
-        width: 95%;
-    }
+    
+    .pricing-container, .faq-container { width: 100% !important; }
 }
