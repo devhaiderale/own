@@ -1898,4 +1898,11 @@ footer:hover .big-name {
         width: 100% !important;
         max-width: none !important;
     }
+
+    .huge-link {
+        font-size: 6vw !important;
+        word-break: break-all !important;
+        display: inline-block !important;
+        line-height: 1.2 !important;
+    }
 }
