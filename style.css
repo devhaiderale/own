@@ -1538,7 +1538,8 @@ footer {
 
 .footer-content {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1200px;
+    /* Reduced from 1400px to fix center alignment on desktop */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1602,7 +1603,8 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.5fr;
+    /* CHANGED: Fixed asymmetric grid. Now 3 equal columns for perfect centering */
+    grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     margin-bottom: 6rem;
 }
@@ -1652,8 +1654,6 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    /* background: rgba(39, 201, 63, 0.1); */
-    /* border: 1px solid rgba(39, 201, 63, 0.3); */
     padding: 8px 0px;
     border-radius: 50px;
     color: #27C93F;
