@@ -482,11 +482,9 @@ body.hovering .cursor-outline {
 .stat-num {
     font-family: var(--font-display);
     font-size: 4rem;
-    color: var(--text-main);
     line-height: 1;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-    color: transparent;
-    transition: all 0.5s ease;
+    color: whitesmoke;
+    transition: all 0.3s ease;
 }
 
 .stat-block:hover .stat-num {
@@ -1654,9 +1652,9 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(39, 201, 63, 0.1);
-    border: 1px solid rgba(39, 201, 63, 0.3);
-    padding: 8px 16px;
+    /* background: rgba(39, 201, 63, 0.1); */
+    /* border: 1px solid rgba(39, 201, 63, 0.3); */
+    padding: 8px 0px;
     border-radius: 50px;
     color: #27C93F;
     font-family: monospace;
@@ -1698,29 +1696,6 @@ footer {
     font-family: monospace;
     color: #444;
     font-size: 0.9rem;
-}
-
-.footer-bottom {
-    border-top: 1px solid #222;
-    padding-top: 2rem;
-    text-align: center;
-    overflow: hidden;
-}
-
-.big-name {
-    font-family: var(--font-display);
-    font-size: 13vw;
-    line-height: 0.8;
-    color: transparent;
-    -webkit-text-stroke: 2px #151515;
-    white-space: nowrap;
-    user-select: none;
-    transition: 0.5s;
-}
-
-footer:hover .big-name {
-    -webkit-text-stroke: 2px #222;
-    letter-spacing: 10px;
 }
 
 @media (max-width: 900px) {
